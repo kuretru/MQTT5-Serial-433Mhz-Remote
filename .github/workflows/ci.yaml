@@ -12,7 +12,11 @@ jobs:
           go-version: '1.20'
       - name: Install dependencies
         run: go mod download
-      - name: Build
-        run: go build -v cmd/daemon/main.go
 #      - name: Test with the Go CLI
 #        run: go test
+      - name: Build linux amd64
+        run: GOOS=linux GOARCH=amd64 go build -v -o mqtt5-cover_linux_amd64 cmd/daemon/main.go
+      - name: Build darwin arm64
+        run: GOOS=darwin GOARCH=arm64 go build -v -o mqtt5-cover_darwin_arm64 cmd/daemon/main.go
+      - name: Build linux mipsle
+        run: GOOS=linux GOARCH=mipsle GOMIPS=softfloat go build -v -o mqtt5-cover_linux_mipsle cmd/daemon/main.go
