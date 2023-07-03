@@ -1,0 +1,19 @@
+MQTT:
+  URL: mqtt://127.0.0.1:1883
+  KeepAlive: 45
+  ConnectTimeout: 3
+  ConnectRetryDelay: 15
+  ClientId: garage.door
+  Username: dev
+  Password: 123456
+  CommandTopic: dev/garage/door/cover/set
+  StateTopic: dev/garage/door/cover/state
+  AvailabilityTopic: dev/garage/door/cover/availability
+Serial:
+  Port: /dev/ttyUSB0
+  OpenCommand: 99112233a14499
+  CloseCommand: 99112233a24499
+  StopCommand: 99112233a34499
+API:
+  Listen: 0.0.0.0:5080
+Debug: false
