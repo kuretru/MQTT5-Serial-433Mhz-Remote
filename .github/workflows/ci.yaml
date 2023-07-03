@@ -20,3 +20,13 @@ jobs:
         run: GOOS=darwin GOARCH=arm64 go build -v -o mqtt5-cover_darwin_arm64 cmd/daemon/main.go
       - name: Build linux mipsle
         run: GOOS=linux GOARCH=mipsle GOMIPS=softfloat go build -v -o mqtt5-cover_linux_mipsle cmd/daemon/main.go
+      - name: Upload linux amd64
+        uses: actions/upload-artifact@v3
+        with:
+          name: mqtt5-cover_linux_amd64
+          path: mqtt5-cover_linux_amd64
+      - name: Upload linux mipsle
+        uses: actions/upload-artifact@v3
+        with:
+          name: mqtt5-cover_linux_mipsle
+          path: mqtt5-cover_linux_mipsle
