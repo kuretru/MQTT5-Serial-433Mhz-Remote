@@ -14,12 +14,21 @@ jobs:
         run: go mod download
 #      - name: Test with the Go CLI
 #        run: go test
+
       - name: Build linux amd64
         run: GOOS=linux GOARCH=amd64 go build -v -o mqtt5-cover_linux_amd64 cmd/daemon/main.go
       - name: Build darwin arm64
         run: GOOS=darwin GOARCH=arm64 go build -v -o mqtt5-cover_darwin_arm64 cmd/daemon/main.go
       - name: Build linux mipsle
         run: GOOS=linux GOARCH=mipsle GOMIPS=softfloat go build -v -o mqtt5-cover_linux_mipsle -trimpath -ldflags "-s -w" cmd/daemon/main.go
+
+      - name: Compress linux mipsle
+        uses: svenstaro/upx-action@v2
+        with:
+          files: |
+            mqtt5-cover_linux_mipsle
+          args: --best
+
       - name: Upload linux amd64
         uses: actions/upload-artifact@v3
         with:
