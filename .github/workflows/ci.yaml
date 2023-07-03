@@ -28,6 +28,7 @@ jobs:
           files: |
             mqtt5-cover_linux_mipsle
           args: --best
+          strip: false
 
       - name: Upload linux amd64
         uses: actions/upload-artifact@v3
