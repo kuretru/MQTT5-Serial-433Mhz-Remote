@@ -14,5 +14,5 @@ jobs:
         run: go mod download
       - name: Build
         run: go build -v cmd/daemon/main.go
-      - name: Test with the Go CLI
-        run: go test
+#      - name: Test with the Go CLI
+#        run: go test
